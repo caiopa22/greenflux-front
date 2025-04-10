@@ -5,11 +5,16 @@ import reportWebVitals from './reportWebVitals';
 import Homepage from './pages/Homepage';
 import { createBrowserRouter, Route, RouterProvider, Routes } from 'react-router';
 import { Provider } from './components/ui/provider';
+import Inputpage from './pages/Inputpage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Homepage />,
+  },
+  {
+    path: "/inputs",
+    element: <Inputpage />,
   }
 ]);
 
@@ -19,6 +24,7 @@ root.render(
     <RouterProvider router={router}>
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/inputs" element={<Inputpage />} />
       </Routes>
     </RouterProvider>
   </Provider>

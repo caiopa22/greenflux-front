@@ -1,6 +1,10 @@
 import { Box, Button, Flex, HStack, Text, Textarea } from '@chakra-ui/react';
+import { useNavigate } from 'react-router';
 
-const Header = (isHomepage) => {
+const Header = ({isHomepage}) => {
+
+    const navigate = useNavigate();
+
     return (
         <Flex justify="space-between" p="16px 64px" bg={isHomepage ? "transparent" : "secondary"} zIndex={9999} position="relative">
             <Flex gap="16">
@@ -13,7 +17,10 @@ const Header = (isHomepage) => {
                         <Text
                             fontFamily="Poppins"
                             fontSize="sm"
-                            key={item}>
+                            key={item}
+                            cursor="pointer"
+                            onClick={() => navigate("/inputs")}
+                            >
                             {item}
                         </Text>
                     ))}

@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 const Homepage = () => {
     return (
         <Box>
-            <Header />
+            <Header isHomepage={false}/>
             <Flex
                 position="absolute"
                 top="0"
@@ -15,7 +15,6 @@ const Homepage = () => {
                 height="100vh"
                 align="center"
             >
-
                 <Image src="/imgs/homepage.png"
                     alt="Homepage"
                     h="100%"
