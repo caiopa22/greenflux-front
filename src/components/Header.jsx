@@ -8,26 +8,28 @@ const Header = ({isHomepage}) => {
     
     const handleRedirect = (pageName) => {
         const routes = {
-            "Cálculo": "inputs",
+            "Cálculo": "/inputs",
             "Início": "/",
-            "Dashboard": "dashboard",
+            "Dashboard": "/dashboard",
         };
     
         return routes[pageName];
     };
 
     return (
-        <Flex justify="space-between" p="16px 64px" bg={isHomepage ? "transparent" : "secondary"} zIndex={9999} position="relative">
-            <Flex gap="16">
+        <Flex color="white" justify="space-between" p="16px 64px" bg={isHomepage ? "transparent" : "secondary"} zIndex={9999} position="relative">
+            <Flex gap="16" >
                 <Text
                     fontFamily="sansita"
-                    fontSize="2xl"
+                    fontSize="3xl"
+                    onClick={() => navigate("/")}
+                    cursor="pointer"
                 >Greenflux</Text>
                 <HStack gap="4">
                     {["Início", "Cálculo", "Dashboard"].map((item) => (
                         <Text
                             fontFamily="Poppins"
-                            fontSize="sm"
+                            fontSize="md"
                             key={item}
                             cursor="pointer"
                             onClick={() => navigate(handleRedirect(item))}
@@ -41,7 +43,7 @@ const Header = ({isHomepage}) => {
                 <ColorModeButton />
                 <Text
                     fontFamily="Poppins"
-                    fontSize="sm"
+                    fontSize="md"
                     fontWeight="light"
                     >
                     Seja bem vindo,

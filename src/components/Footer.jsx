@@ -39,7 +39,7 @@ const Footer = ({isHomepage}) => {
                 <VStack align="start">
                     <Text {...titleStyles}>Participantes</Text>
                     <SimpleGrid columns={2} gap="1">
-                        {["Caio Pacheco - N089695", "Caio Pacheco - N089695", "Caio Pacheco - N089695", "Caio Pacheco - N089695", "Caio Pacheco - N089695"].map((item) => (
+                        {["Caio Pacheco - N089695", "Kayky Crespo - N089695", "Luiza - N089695", "Enzo - N089695", "Deivid - N089695"].map((item) => (
                             <Text fontSize="sm" fontFamily="Open sans" key={item}>{item}</Text>
                         ))}
                     </SimpleGrid>

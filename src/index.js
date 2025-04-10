@@ -6,6 +6,7 @@ import Homepage from './pages/Homepage';
 import { createBrowserRouter, Route, RouterProvider, Routes } from 'react-router';
 import { Provider } from './components/ui/provider';
 import Inputpage from './pages/Inputpage';
+import Dashboard from './pages/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/inputs",
     element: <Inputpage />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   }
 ]);
 
@@ -25,6 +30,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/inputs" element={<Inputpage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </RouterProvider>
   </Provider>
