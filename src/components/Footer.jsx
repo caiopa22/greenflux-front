@@ -2,7 +2,7 @@ import { Flex, HStack, SimpleGrid, Text, VStack, Wrap } from "@chakra-ui/react";
 import { BiX } from "react-icons/bi";
 import { BsInstagram, BsLinkedin, BsTwitter, BsX } from "react-icons/bs";
 
-const Footer = () => {
+const Footer = ({isHomepage}) => {
 
     const titleStyles = {
         fontFamily: "poppins",
@@ -10,7 +10,7 @@ const Footer = () => {
     }
 
     return (
-        <Flex mt="90vh" bg="secondary" p="16px 64px" justify="space-between">
+        <Flex mt={isHomepage ?? "90vh"} bg="secondary" p="16px 64px" justify="space-between">
             <HStack align="center" gap="8"> 
                 <Text
                     fontFamily="sansita"

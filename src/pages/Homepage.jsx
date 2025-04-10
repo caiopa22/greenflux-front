@@ -5,6 +5,9 @@ import { FaArrowRight } from 'react-icons/fa';
 import Footer from '../components/Footer';
 
 const Homepage = () => {
+
+
+
     return (
         <Box>
             <Header isHomepage={false}/>
