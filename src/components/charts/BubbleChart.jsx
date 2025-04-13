@@ -46,11 +46,23 @@ const BubbleChart = () => {
           display: true,
           text: 'X Axis',
         },
+        grid: {
+          color: 'rgba(200, 200, 200, 0.4)', // change grid line color
+          lineWidth: 1, // line thickness
+          drawBorder: true,
+          borderColor: 'rgba(100, 100, 100, 0.4)', // axis line color
+        },
       },
       y: {
         title: {
           display: true,
           text: 'Y Axis',
+        },
+        grid: {
+          color: 'rgba(200, 200, 200, 0.2)',
+          lineWidth: 1,
+          drawBorder: true,
+          borderColor: 'rgba(100, 100, 100, 0.4)',
         },
       },
     },

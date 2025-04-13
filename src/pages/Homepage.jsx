@@ -69,6 +69,7 @@ const Homepage = () => {
                     </Button>
                 </VStack>
             </Flex>
+            <Flex>Hello world!</Flex>
             <Footer />
         </Box>
     );

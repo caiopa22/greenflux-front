@@ -44,13 +44,30 @@ const RadarChart = () => {
     },
     scales: {
       r: {
-        angleLines: { display: true },
+        angleLines: {
+          display: true,
+          color: 'rgba(100, 100, 100, 0.3)', // spokes
+          lineWidth: 1,
+        },
+        grid: {
+          color: 'rgba(200, 200, 200, 0.2)', // circular grid lines
+          lineWidth: 1,
+        },
         suggestedMin: 0,
         suggestedMax: 100,
+        pointLabels: {
+          font: {
+            size: 14,
+          },
+          color: 'gray',
+        },
+        ticks: {
+          backdropColor: 'transparent',
+          color: 'gray',
+        },
       },
     },
   };
-
   return <Radar data={data} options={options} />;
 };
 

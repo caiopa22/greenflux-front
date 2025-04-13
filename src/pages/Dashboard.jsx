@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Field } from "../components/ui/field";
 import BubbleChart from "../components/charts/BubbleChart";
 import RadarChart from "../components/charts/RadarChart";
+import Footer from '../components/Footer';
 
 const Dashboard = () => {
 
@@ -31,7 +32,7 @@ const Dashboard = () => {
     return (
         <>
             <Header isHomepage={false} />
-            <VStack  m="48px 64px">
+            <VStack m="48px 64px">
                 <VStack align="start" w="100%">
                     <VStack align="start" gap="0">
                         <Text fontFamily="Open sans" color="gray.400" fontSize="md">Dashboard</Text>
@@ -72,8 +73,9 @@ const Dashboard = () => {
                         </Wrap>
                     </Flex>
                 </VStack>
-                <Box>
+                <Box m="48px 64px" w="100%">
                     <Steps.Root
+                        colorPalette="green"
                         orientation="vertical"
                         height="400px"
                         defaultStep={1}
@@ -96,7 +98,6 @@ const Dashboard = () => {
                                 </Steps.Content>
                             ))}
                             <Steps.CompletedContent>All steps are complete!</Steps.CompletedContent>
-
                             <ButtonGroup size="sm" variant="outline">
                                 <Steps.PrevTrigger asChild>
                                     <Button>Prev</Button>
@@ -109,6 +110,7 @@ const Dashboard = () => {
                     </Steps.Root>
                 </Box>
             </VStack>
+            <Footer isHomepage={false}/>
         </>
     );
 }
