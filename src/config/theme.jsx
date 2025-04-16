@@ -7,6 +7,7 @@ const config = defineConfig({
         primary: "#0A8754",
         secondary: "#05603A",
         tertiary: "#033E26",
+        
       },
       fonts: {
         heading: { value: `'Open sans', sans-serif` },

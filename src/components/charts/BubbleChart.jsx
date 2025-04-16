@@ -25,8 +25,8 @@ const BubbleChart = () => {
       {
         label: 'Random Bubble Data',
         data: getRandomData(),
-        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: 'rgba(5, 96, 58, 0.5)',
+        borderColor: 'rgb(11, 189, 118)',
         borderWidth: 1,
       },
     ],

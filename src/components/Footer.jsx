@@ -10,7 +10,7 @@ const Footer = ({isHomepage}) => {
     }
 
     return (
-        <Flex bg="secondary" p="16px 64px" justify="space-between">
+        <Flex bg="secondary" p="16px 64px" justify="space-between" color="white">
             <HStack align="center" gap="8"> 
                 <Text
                     fontFamily="sansita"
