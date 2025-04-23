@@ -9,6 +9,8 @@ import Inputpage from './pages/Inputpage';
 import Dashboard from './pages/Dashboard';
 import MyDashboardspage from './pages/MyDashboardspage';
 import LoginPage from './pages/LoginPage';
+import RegistrarPage from './pages/RegistrarPage';
+
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/register",
+    element: <RegistrarPage />,
   }
 ]);
 
@@ -43,6 +49,7 @@ root.render(
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/mydashboards" element={<MyDashboardspage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/registrar" element={<RegistrarPage />} />
       </Routes>
     </RouterProvider>
   </Provider>
