@@ -8,6 +8,7 @@ import { Provider } from './components/ui/provider';
 import Inputpage from './pages/Inputpage';
 import Dashboard from './pages/Dashboard';
 import MyDashboardspage from './pages/MyDashboardspage';
+import LoginPage from './pages/LoginPage';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/mydashboards",
     element: <MyDashboardspage />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
   }
 ]);
 
@@ -37,6 +42,7 @@ root.render(
         <Route path="/inputs" element={<Inputpage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/mydashboards" element={<MyDashboardspage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </RouterProvider>
   </Provider>
