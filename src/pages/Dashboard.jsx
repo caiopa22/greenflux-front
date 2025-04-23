@@ -1,116 +1,192 @@
-import { Box, Button, ButtonGroup, Center, Flex, Input, Stack, Steps, Text, VStack, Wrap } from "@chakra-ui/react";
+import { Box, GridItem, Button, ButtonGroup, Center, Flex, Grid, HStack, Input, Stack, Stat, Steps, Text, Timeline, VStack, Wrap, IconButton, Popover, Progress } from "@chakra-ui/react";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import { Field } from "../components/ui/field";
 import BubbleChart from "../components/charts/BubbleChart";
 import RadarChart from "../components/charts/RadarChart";
 import Footer from '../components/Footer';
+import { LuCheck, LuClock, LuPackage, LuSearch, LuShip } from "react-icons/lu";
+import { IoCloudDownloadOutline } from "react-icons/io5";
+import { IoMdInformationCircleOutline } from "react-icons/io";
+import { Tooltip } from "../components/ui/tooltip";
 
 const Dashboard = () => {
 
 
-    const steps = [
+    const generalInfo = [
         {
-            title: "Step 1",
-            description: "Step 1 description",
+            title: "Total de dispositivos",
+            value: "1000",
+            description: "Número total de dispositivos registrados na rede, independentemente do status atual."
         },
         {
-            title: "Step 2",
-            description: "Step 2 description",
+            title: "Dispositivos ativos",
+            value: "800",
+            description: "Dispositivos que estão atualmente conectados e operando normalmente."
         },
         {
-            title: "Step 3",
-            description: "Step 3 description",
+            title: "Dispositivos inativos",
+            value: "200",
+            description: "Dispositivos que estão desligados, desconectados ou não estão se comunicando com a rede."
         },
+        {
+            title: "Dispositivos críticos",
+            value: "50",
+            description: "Dispositivos com falhas, alertas de segurança ou funcionamento comprometido que requerem atenção imediata."
+        }
     ]
+
 
     const chartTitleStyle = {
         fontSize: "lg",
         fontFamily: "Poppins",
+        color: "gray.700"
+    }
+
+    const generalInfoCard = (title, value, description) => {
+        return (
+            <VStack p="6" align="center" rounded="lg" shadow="inset">
+                <Flex w="100%" align="center">
+                    <Stat.Root>
+                        <Stat.Label color="gray.700" fontFamily="Poppins" whiteSpace="nowrap">{title}</Stat.Label>
+                        <Stat.ValueText>{value}</Stat.ValueText>
+                    </Stat.Root>
+                    <Popover.Root>
+                        <Popover.Trigger asChild>
+                            <IconButton rounded="full" variant="ghost">
+                                <IoMdInformationCircleOutline />
+                            </IconButton>
+                        </Popover.Trigger>
+                        <Popover.Positioner>
+                            <Popover.Content>
+                                <Popover.Arrow />
+                                <Popover.Body>
+                                    <Popover.Title fontFamily="Poppins" fontSize="md" fontWeight="medium">{title}</Popover.Title>
+                                    <Text fontFamily="Open sans" my="2" >{description}</Text>
+                                </Popover.Body>
+                            </Popover.Content>
+                        </Popover.Positioner>
+                    </Popover.Root>
+                </Flex>
+                <Progress.Root size="lg" colorPalette="green" defaultValue={Math.floor(Math.random() * (100 - 0) + 0)} w="100%">
+                    <HStack gap="5">
+                        <Progress.Track flex="1">
+                            <Progress.Range />
+                        </Progress.Track>
+                        <Progress.ValueText fontFamily="Poppins">{Math.floor(Math.random() * (100 - 0) + 0)}%</Progress.ValueText>
+                    </HStack>
+                </Progress.Root>
+            </VStack>
+        );
     }
 
     return (
         <>
             <Header isHomepage={false} />
-            <VStack m="48px 64px">
-                <VStack align="start" w="100%">
+            <VStack m="48px 64px" gap="6">
+                <VStack align="start" w="100%" bg="white">
                     <VStack align="start" gap="0">
                         <Text fontFamily="Open sans" color="gray.400" fontSize="md">Dashboard</Text>
-                        <Text fontFamily="Poppins" fontSize="xl" >Visão geral</Text>
+                        <Text display="flex" fontFamily="Poppins" fontSize="xl" >Visão geral "<Text fontWeight="semibold">Meu dashboard</Text>"</Text>
                     </VStack>
-                    <Flex w="100%" gap="8">
-                        <Flex flexDir="column" w="60%" shadow="md" p="4">
-                            <Text {...chartTitleStyle}>Topologia de redes</Text>
-                            <Box mt="24">
-                                <BubbleChart />
-                            </Box>
-                        </Flex>
-                        <Wrap w="40%" >
-                            <Box shadow="md" p="4">
-                                <Text {...chartTitleStyle}>Topologia de redes</Text>
-                                <Box>
-                                    <RadarChart />
-                                </Box>
-                            </Box>
-                            <Box shadow="md" p="4">
-                                <Text {...chartTitleStyle}>Topologia de redes</Text>
-                                <Box>
-                                    <RadarChart />
-                                </Box>
-                            </Box>
-                            <Box shadow="md" p="4">
-                                <Text {...chartTitleStyle}>Topologia de redes</Text>
-                                <Box>
-                                    <RadarChart />
-                                </Box>
-                            </Box>
-                            <Box shadow="md" p="4">
-                                <Text {...chartTitleStyle}>Topologia de redes</Text>
-                                <Box>
-                                    <RadarChart />
-                                </Box>
-                            </Box>
-                        </Wrap>
+                    <Flex flexDir="column" gap="8" w="100%">
+                        <Grid templateColumns="repeat(4, 1fr)" gap="6">
+                            {generalInfo.map((info) => (
+                                generalInfoCard(info.title, info.value, info.description)
+                            ))}
+                        </Grid>
+                        <Grid templateColumns="repeat(3, 1fr)" gap="6">
+                            <GridItem colSpan={2}>
+                                <Flex flexDir="column" rounded="xl" shadow="lg" p="6">
+                                    <Text {...chartTitleStyle}>Topologia de redes</Text>
+                                    <Box>
+                                        <BubbleChart />
+                                    </Box>
+                                </Flex>
+                            </GridItem>
+                            <GridItem colSpan={1} >
+                                <VStack align="start" gap="6">
+                                    <Text borderStart="3px solid" borderColor='primary' pl="4" fontFamily="Open sans" fontSize="2xl">Linha do tempo</Text>
+                                    <Timeline.Root fontFamily="Open sans" size="xl" colorPalette="green">
+                                        <Timeline.Item>
+                                            <Timeline.Connector>
+                                                <Timeline.Separator />
+                                                <Timeline.Indicator>
+                                                    <LuClock />
+                                                </Timeline.Indicator>
+                                            </Timeline.Connector>
+                                            <Timeline.Content>
+                                                <Timeline.Title>Começo do processo</Timeline.Title>
+                                                <Timeline.Description>14:17 PM 16/04/2025</Timeline.Description>
+                                                <Text textStyle="sm">
+                                                    Criando servidor e <strong>buscando</strong> informações com base nos dados fornecidos.
+                                                </Text>
+                                            </Timeline.Content>
+                                        </Timeline.Item>
+
+                                        <Timeline.Item>
+                                            <Timeline.Connector>
+                                                <Timeline.Separator />
+                                                <Timeline.Indicator>
+                                                    <LuCheck />
+                                                </Timeline.Indicator>
+                                            </Timeline.Connector>
+                                            <Timeline.Content>
+                                                <Timeline.Title textStyle="sm">Servidor criado</Timeline.Title>
+                                                <Timeline.Description>14:17 PM 16/04/2025</Timeline.Description>
+                                            </Timeline.Content>
+                                        </Timeline.Item>
+
+                                        <Timeline.Item>
+                                            <Timeline.Connector>
+                                                <Timeline.Separator />
+                                                <Timeline.Indicator>
+                                                    <LuCheck />
+                                                </Timeline.Indicator>
+                                            </Timeline.Connector>
+                                            <Timeline.Content>
+                                                <Timeline.Title textStyle="sm">Buscando dados</Timeline.Title>
+                                                <Timeline.Description>14:17 PM 16/04/2025</Timeline.Description>
+                                            </Timeline.Content>
+                                        </Timeline.Item>
+
+                                        <Timeline.Item>
+                                            <Timeline.Connector>
+                                                <Timeline.Separator />
+                                                <Timeline.Indicator>
+                                                    <LuCheck />
+                                                </Timeline.Indicator>
+                                            </Timeline.Connector>
+                                            <Timeline.Content>
+                                                <Timeline.Title textStyle="sm">Cálculo de gasto</Timeline.Title>
+                                                <Timeline.Description>14:17 PM 16/04/2025</Timeline.Description>
+                                            </Timeline.Content>
+                                        </Timeline.Item>
+
+                                        <Timeline.Item>
+                                            <Timeline.Connector>
+                                                <Timeline.Separator />
+                                                <Timeline.Indicator>
+                                                    <LuCheck />
+                                                </Timeline.Indicator>
+                                            </Timeline.Connector>
+                                            <Timeline.Content>
+                                                <Timeline.Title textStyle="sm">Processo finalizado</Timeline.Title>
+                                                <Timeline.Description>14:17 PM 16/04/2025</Timeline.Description>
+                                            </Timeline.Content>
+                                        </Timeline.Item>
+
+                                    </Timeline.Root>
+                                </VStack>
+                            </GridItem>
+                        </Grid>
                     </Flex>
                 </VStack>
-                <Box m="48px 64px" w="100%">
-                    <Steps.Root
-                        colorPalette="green"
-                        orientation="vertical"
-                        height="400px"
-                        defaultStep={1}
-                        count={steps.length}
-                    >
-                        <Steps.List>
-                            {steps.map((step, index) => (
-                                <Steps.Item key={index} index={index} title={step.title}>
-                                    <Steps.Indicator />
-                                    <Steps.Title>{step.title}</Steps.Title>
-                                    <Steps.Separator />
-                                </Steps.Item>
-                            ))}
-                        </Steps.List>
-
-                        <Stack>
-                            {steps.map((step, index) => (
-                                <Steps.Content key={index} index={index}>
-                                    {step.description}
-                                </Steps.Content>
-                            ))}
-                            <Steps.CompletedContent>All steps are complete!</Steps.CompletedContent>
-                            <ButtonGroup size="sm" variant="outline">
-                                <Steps.PrevTrigger asChild>
-                                    <Button>Prev</Button>
-                                </Steps.PrevTrigger>
-                                <Steps.NextTrigger asChild>
-                                    <Button>Next</Button>
-                                </Steps.NextTrigger>
-                            </ButtonGroup>
-                        </Stack>
-                    </Steps.Root>
-                </Box>
+                <HStack w="100%">
+                    <Button colorPalette="green" fontFamily="Open sans">Exportar para planilha <IoCloudDownloadOutline /></Button>
+                </HStack>
             </VStack>
-            <Footer isHomepage={false}/>
+            <Footer isHomepage={false} />
         </>
     );
 }

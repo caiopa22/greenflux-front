@@ -59,7 +59,7 @@ const Homepage = () => {
 
         return (
             <VStack >
-                <Image src={pfp} alt={name} boxSize="44" border="2px solid #16FFA0" borderRadius="full" />
+                <Image src={pfp} alt={name} boxSize="36" border="2px solid #16FFA0" borderRadius="full" />
                 <Text fontFamily="Poppins" fontWeight="semibold" fontSize="xl" color="white">{name}</Text>
                 {tags.map((tag, index) => TeamProfileTag(tag, index))}
             </VStack>
@@ -72,7 +72,6 @@ const Homepage = () => {
             <Header isHomepage={true} />
             <Image src="/imgs/homepage.png"
                 alt="Homepage"
-                h="100%"
                 objectFit="cover"
                 top="0"
                 left="0"
@@ -83,8 +82,8 @@ const Homepage = () => {
             />
             <Flex
                 width="100%"
-                height="91vh"
                 align="center"
+                height="90vh"
             >
                 <VStack align="start" w="750px" ml="64px" zIndex={1}>
                     <Text
